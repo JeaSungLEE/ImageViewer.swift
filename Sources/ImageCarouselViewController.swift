@@ -13,7 +13,7 @@ public class ImageCarouselViewController:UIPageViewController {
     var theme:ImageViewerTheme = .light {
         didSet {
             navItem.leftBarButtonItem?.tintColor = theme.tintColor
-            backgroundView.backgroundColor = theme.color
+            backgroundView.backgroundColor = theme.color.withAlphaComponent(0.8)
         }
     }
     
@@ -63,15 +63,6 @@ public class ImageCarouselViewController:UIPageViewController {
     }
     
     private func addNavBar() {
-        // Add Navigation Bar
-        let closeBarButton = UIBarButtonItem(
-            title: NSLocalizedString("Close", comment: "Close button title"),
-            style: .plain,
-            target: self,
-            action: #selector(dismiss(_:)))
-        
-        navItem.leftBarButtonItem = closeBarButton
-        navItem.leftBarButtonItem?.tintColor = theme.tintColor
         navBar.alpha = 0.0
         navBar.items = [navItem]
         navBar.insert(to: view)

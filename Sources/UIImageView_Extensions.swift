@@ -130,6 +130,7 @@ extension UIImageView {
             options: sender.options,
             initialIndex: sender.initialIndex)
         let presentFromVC = sender.from ?? vc
+        imageCarousel.modalPresentationStyle = .overFullScreen
         presentFromVC?.present(imageCarousel, animated: false, completion: nil)
     }
 }

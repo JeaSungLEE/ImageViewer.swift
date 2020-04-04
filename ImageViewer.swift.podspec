@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/michaelhenry/ImageViewer.swift'
   s.author = 'Michael Henry Pantaleon', 'me@iamkel.net'
   s.source = {
-    :git => 'https://github.com/michaelhenry/ImageViewer.swift.git',
+    :git => 'https://github.com/JeaSungLEE/ImageViewer.swift.git',
     :tag => s.version.to_s
   }
   s.source_files = 'Sources/*'
