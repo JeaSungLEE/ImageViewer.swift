@@ -30,7 +30,7 @@ class ImageViewerController:UIViewController, UIGestureRecognizerDelegate {
     private var leading:NSLayoutConstraint!
     private var trailing:NSLayoutConstraint!
     private var bottom:NSLayoutConstraint!
-    
+    private var closeButton: UIImageView?
     private var imageView:UIImageView!
     private var scrollView:UIScrollView!
    
@@ -86,6 +86,12 @@ class ImageViewerController:UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        closeButton = UIImageView(frame: CGRect(x: 20, y: 20 + view.safeAreaInsets.top, width: 15, height: 15))
+        closeButton?.image = UIImage(systemName: "xmark")
+        if let closeButton = closeButton {
+            scrollView.addSubview(closeButton)
+        }
         switch imageItem {
         case .image(let img):
             imageView.image = img
@@ -109,6 +115,9 @@ class ImageViewerController:UIViewController, UIGestureRecognizerDelegate {
         addGestureRecognizers()
     }
     
+    @objc func closeAtion(_ sender: UIButton) {
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         guard animateOnDidAppear == true else {
@@ -123,6 +132,8 @@ class ImageViewerController:UIViewController, UIGestureRecognizerDelegate {
         super.viewWillLayoutSubviews()
         updateConstraintsForSize(view.bounds.size)
         updateMinMaxZoomScaleForSize(view.bounds.size)
+        closeButton?.frame = CGRect(x: 20, y: 50 + view.safeAreaInsets.top, width: 20, height: 20)
+        closeButton?.tintColor = UIColor.white.withAlphaComponent(0.5)
     }
     
     // MARK: Add Gesture Recognizers
@@ -195,11 +206,7 @@ class ImageViewerController:UIViewController, UIGestureRecognizerDelegate {
     
     @objc
     func didSingleTap(_ recognizer: UITapGestureRecognizer) {
-        
-        let currentNavAlpha = self.navBar?.alpha ?? 0.0
-        UIView.animate(withDuration: 0.235) {
-            self.navBar?.alpha = currentNavAlpha > 0.5 ? 0.0 : 1.0
-        }
+        executeViewDismissalAnimation(0)
     }
     
     @objc
