@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'ImageViewer.swift'
-  s.version =  ENV['LIB_VERSION'] || '3.1'
+  s.version =  ENV['LIB_VERSION'] || '3.2'
   s.summary = 'An easy to use Image Viewer that is inspired by Facebook'
   s.homepage = 'https://github.com/michaelhenry/ImageViewer.swift'
   s.author = 'Michael Henry Pantaleon', 'me@iamkel.net'
@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.source_files = 'Sources/*'
   s.requires_arc = true
   s.dependency 'SDWebImage'
-  s.ios.deployment_target  = '10.0'
+  s.ios.deployment_target  = '13.0'
   s.swift_versions = ['4.0','4.2','5.0']
   s.license = {
     :type => 'MIT',
